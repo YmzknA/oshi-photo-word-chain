@@ -57,3 +57,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "cloudinary", "~> 2.2"
+
+gem "carrierwave", "~> 3.1"
