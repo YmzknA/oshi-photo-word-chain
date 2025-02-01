@@ -61,3 +61,5 @@ end
 gem "cloudinary", "~> 2.2"
 
 gem "carrierwave", "~> 3.1"
+gem "redis"
+gem "redis-actionpack"
