@@ -9,4 +9,11 @@
     <%= post.body %>
   </p>
 
+  <p>
+    <strong>Image:</strong>
+    <% if post.image.present? %>
+      <%= image_tag post.image.url %>
+    <% end %>
+  </p>
+
 </div>
