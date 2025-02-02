@@ -3,6 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.hosts << "testdeploy1-n37y4y3q.b4a.run"
+  config.hosts << "node300a.containers.back4app.com"
   # Code is not reloaded between requests.
   config.enable_reloading = false
 
