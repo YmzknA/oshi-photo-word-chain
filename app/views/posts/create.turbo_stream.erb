@@ -1,6 +1,7 @@
 <%= turbo_stream.replace "new_post" do %>
   <%= form_with model: Post.new do |form| %>
-    <%= render "form", form: form %>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+      <%= render "form", form: form %>
   <% end %>
 <% end %>
 
