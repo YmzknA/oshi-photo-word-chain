@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
     @post = Post.new
   end
 
@@ -26,11 +26,12 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        @post.broadcast_prepend_later_to("posts_channel")
         format.html { redirect_to posts_path, notice: "Post was successfully created." }
-        format.json { render :show, status: :created, location: @post }
+        format.turbo_stream
       else
-        format.html { redirect_to posts_path , status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        @posts = Post.all
+        format.html { render action: :index , status: :unprocessable_entity }
       end
     end
   end
