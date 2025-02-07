@@ -28,7 +28,7 @@ class PostsController < ApplicationController
       if @post.save
         @post.broadcast_prepend_later_to("posts_channel")
         format.html { redirect_to posts_path, notice: "Post was successfully created." }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = "Post was successfully created." }
       else
         @posts = Post.all
         format.html { render action: :index , status: :unprocessable_entity }
