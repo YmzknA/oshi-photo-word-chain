@@ -1,26 +1,23 @@
+<!-- 投稿が最初の投稿でない場合 -->
+<div class="flex items-center justify-center space-x-3">
 
-<div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden border border-gray-100">
-<div class="p-6">
-<div id="<%= dom_id post %>">
-  <p>
-    <strong>Name:</strong>
-    <%= post.name %>
-  </p>
+  <div class="text-gray-500">
+    <!-- 左矢印アイコン -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </div>
 
-  <p>
-    <strong>Body:</strong>
-    <%= post.body %>
-  </p>
-
-  <p>
-    <strong>Image:</strong>
-    <% if post.image.present? %>
-      <%= image_tag post.image.url %>
-    <% end %>
-  </p>
+  <% if post == Post.all_posts.first %>
+    <!-- 最初の投稿の場合 -->
+    <div class="flex-1">
+      <%= render partial: "posts/first_post_content", locals: { post: post } %>
+    </div>
+  <% else %>
+    <div class="flex-1">
+      <%= render partial: "posts/post_content", locals: { post: post } %>
+    </div>
+  <% end %>
 
 </div>
 
-<%= link_to "Show this post", post, class: "mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-50 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200" %>
-</div>
-</div>

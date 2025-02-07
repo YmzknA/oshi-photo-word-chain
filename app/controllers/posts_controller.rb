@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @posts = Post.all.order(created_at: :desc)
   end
 
   # GET /posts/new
@@ -23,14 +24,14 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
+    @posts = Post.all.order(created_at: :desc)
 
     respond_to do |format|
       if @post.save
-        @post.broadcast_prepend_later_to("posts_channel")
+        @post.broadcast_prepend_to("posts_channel")
         format.html { redirect_to posts_path, notice: "Post was successfully created." }
         format.turbo_stream { flash.now[:notice] = "Post was successfully created." }
       else
-        @posts = Post.all
         format.html { render action: :index , status: :unprocessable_entity }
       end
     end
@@ -53,10 +54,9 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to posts_path, status: :see_other, notice: "Post was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @post.broadcast_remove_to("posts_channel")
+    redirect_to posts_path, notice: 'Post was successfully destroyed.'
+
   end
 
   private
