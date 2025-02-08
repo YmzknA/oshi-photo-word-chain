@@ -3,12 +3,12 @@
 <div class="flex justify-center mt-5 mx-2">
   <div>
     <% if @post == Post.all_posts.first %>
-      <%= render partial: "first_post_content", locals: { post: @post } %>
+      <%= render partial: "posts/show_post/first_post_content", locals: { post: @post } %>
     <% else %>
-      <%= render partial: "post_content", locals: { post: @post } %>
+      <%= render partial: "posts/show_post/post_content", locals: { post: @post } %>
     <% end %>
 
-    <div class="max-w-[80%] mx-auto">
+    <div class="max-w-[80%] mx-auto mb-5">
       <div class="mt-4 flex flex-col gap-2 text-center">
         <%= link_to "Edit this post", edit_post_path(@post), class: "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded" %> 
         <%= link_to "Back to posts", posts_path, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" %>
