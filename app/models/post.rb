@@ -9,6 +9,8 @@ class Post < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  belongs_to :user
+
   def self.all_posts
     Post.all.order(created_at: :desc)
   end

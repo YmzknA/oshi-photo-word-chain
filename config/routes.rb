@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   resources :posts
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -13,4 +12,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "homes#top"
+
+  resources :users, only: [:show]
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 end
