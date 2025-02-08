@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.order(created_at: :desc)
     @post = Post.new
+    @from_post_index = true
   end
 
   # GET /posts/1 or /posts/1.json

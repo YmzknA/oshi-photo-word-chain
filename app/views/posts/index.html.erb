@@ -45,7 +45,7 @@
     <div id="posts" class="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8">
       <!-- article - start -->
       <% @posts.each do |post| %>
-        <%= render partial: "posts/post", locals: { post: post } %>
+        <%= render partial: "posts/post", locals: { post: post, from_post_index: @from_post_index } %>
       <% end %>
     </div>
   </div>

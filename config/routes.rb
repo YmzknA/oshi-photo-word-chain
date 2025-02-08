@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "homes#top"
 
-  resources :users, only: [:show]
+  resources :user, only: [:show]
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
