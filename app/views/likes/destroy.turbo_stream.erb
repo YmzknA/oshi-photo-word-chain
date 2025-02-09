@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "remove-like-button-for-post-#{@post.id}" do %>
+  <%= render "posts/add_like", post: @post %>
+<% end %>

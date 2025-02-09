@@ -1,14 +1,17 @@
 class LikesController < ApplicationController
   def create
-    post = Post.find(params[:post_id])
-    current_user.add_like(post)
-    redirect_to posts_path, notice: "いいねしました"
+    @post = Post.find(params[:post_id])
+    current_user.add_like(@post)
+    @like = current_user.likes.find_by(post_id: @post.id)
+
+    respond_to do |format|
+      @like.broadcast_append_to("like_channel")
+      format.turbo_stream
+    end
   end
 
   def destroy
-    post = Post.find(params[:post_id])
-    current_user.remove_like(post)
-
-    redirect_to posts_path, notice: "いいねを解除しました", status: :see_other
+    @post = current_user.likes.find_by(post_id: params[:id]).post
+    current_user.remove_like(@post)
   end
 end

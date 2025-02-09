@@ -13,14 +13,14 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :post
 
   def add_like(post)
-    likes_posts << post
+    liked_posts << post
   end
 
   def remove_like(post)
-    likes_posts.destroy(post)
+    liked_posts.destroy(post)
   end
 
-  def like?(post)
+  def liked?(post)
     liked_posts.include?(post)
   end
 end
