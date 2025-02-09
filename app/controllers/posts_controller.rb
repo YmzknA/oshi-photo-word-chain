@@ -22,6 +22,10 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def liked
+    @liked_posts = current_user.liked_posts
+  end
+
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)

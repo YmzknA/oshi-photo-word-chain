@@ -9,5 +9,18 @@ class User < ApplicationRecord
   end
 
   has_many :posts
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
 
+  def add_like(post)
+    likes_posts << post
+  end
+
+  def remove_like(post)
+    likes_posts.destroy(post)
+  end
+
+  def like?(post)
+    liked_posts.include?(post)
+  end
 end
