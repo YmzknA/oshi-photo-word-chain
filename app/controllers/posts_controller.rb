@@ -34,7 +34,14 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        @post.broadcast_prepend_to("posts_channel")
+        @post.broadcast_prepend_to(
+          "posts_channel",
+          partial: "posts/post",
+          locals: {
+            post: @post,
+          }
+        )
+
         format.html { redirect_to posts_path, notice: "Post was successfully created." }
         format.turbo_stream { flash.now[:notice] = "Post was successfully created." }
       else
