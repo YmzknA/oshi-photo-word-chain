@@ -1,0 +1,15 @@
+<div class="flex items-center justify-center space-x-3">
+  
+  <% if post == Post.all_posts.first %>
+    <!-- 最初の投稿の場合 -->
+    <div class="flex-1">
+      <%= render partial: "posts/index_post/first_post_content", locals: { post: post } %>
+    </div>
+  <% else %>
+    <div class="flex-1">
+      <%= render partial: "posts/index_post/post_content", locals: { post: post } %>
+    </div>
+  <% end %>
+
+</div>
+
