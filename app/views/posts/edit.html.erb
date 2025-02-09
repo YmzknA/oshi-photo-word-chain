@@ -1,12 +1,30 @@
 <% content_for :title, "Editing post" %>
 
-<h1>Editing post</h1>
-
-<%= render "form", post: @post %>
+<h1 class="text-xl font-semibold text-gray-900 mb-6">Edit Post</h1>
+<% if @post.errors.any? %>
+  <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+    <div class="flex">
+      <div class="ml-3">
+        <h3 class="text-sm font-medium text-red-800">
+          <%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:
+        </h3>
+        <div class="mt-2 text-sm text-red-700">
+          <ul class="list-disc list-inside">
+            <% @post.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= form_with model: @post, local: true do |form| %>
+  <%= render "form", form: form %>
+<% end %>
 
 <br>
 
-<div>
-  <%= link_to "Show this post", @post %> |
-  <%= link_to "Back to posts", posts_path %>
+<div class="mt-9">
+  <%= link_to "Return to post", post_path(@post), class: "inline-block rounded-lg border bg-white px-4 py-2 text-center text-sm font-semibold text-gray-700 ring-indigo-300 transition duration-100 hover:bg-gray-100 focus-visible:ring md:px-8 md:py-3 md:text-base" %>
 </div>
