@@ -28,7 +28,11 @@ class PostsController < ApplicationController
   end
 
   def liked
-    @liked_posts = current_user.liked_posts
+    if signed_in?
+      @liked_posts = current_user.liked_posts
+    else
+      redirect_to new_user_session_path, notice: "You need to sign in to see your liked posts"
+    end
   end
 
   # POST /posts or /posts.json

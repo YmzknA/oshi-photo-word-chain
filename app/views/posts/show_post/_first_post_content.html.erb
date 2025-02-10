@@ -23,7 +23,7 @@
     <% end %>
     <% if post.image.present? %>
       <div class="mt-4 flex justify-center">
-        <%= image_tag post.image.url, width: "500", class: "rounded-lg shadow-md" %>
+        <%= image_tag post.image.width_only.url, width: "500", class: "rounded-lg shadow-md" %>
       </div>
     <% end %>
     </div>
