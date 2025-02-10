@@ -1,5 +1,12 @@
-<p style="color: green"><%= notice %></p>
-
+  <% if notice %>
+    <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-8">
+      <div class="flex">
+        <div class="ml-3">
+          <p class="text-emerald-700"><%= notice %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <div class="flex justify-center mt-5 mx-2">
   <div>
     <% if @post == Post.all_posts.first %>

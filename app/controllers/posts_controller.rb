@@ -37,23 +37,17 @@ class PostsController < ApplicationController
     @posts = Post.all.order(created_at: :desc)
     @post.user_id = current_user.id
 
-    respond_to do |format|
-      if @post.save
-        @post.broadcast_prepend_to(
-          "posts_likes_channel",
-          partial: "posts/broadcast_first_post_content",
-          locals: {
-            post: @post
-          }
-        )
-
-        format.html { redirect_to posts_path, notice: "Post was successfully created." }
-        format.turbo_stream { flash.now[:notice] = "Post was successfully created." }
-      else
-        format.html { render action: :index , status: :unprocessable_entity }
-      end
-
-      notice = "Post was successfully created."
+    if @post.save
+      @post.broadcast_prepend_to(
+        "posts_likes_channel",
+        partial: "posts/broadcast_first_post_content",
+        locals: {
+          post: @post
+        }
+      )
+      flash.now[:notice] = "Post was successfully created."
+    else
+      flash.now[:alert] = "Post was not created."
     end
   end
 

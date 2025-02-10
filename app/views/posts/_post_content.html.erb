@@ -1,4 +1,4 @@
-<div class="group relative flex h-48 flex-col overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-64 xl:h-96">
+<div class="group relative flex h-48 flex-col overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-96">
   <%# 画像とテキストのリンク %>
   <%= link_to post_path(post) do %>
     <img src="<%= post.image.url %>" loading="lazy" alt="Photo by " class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
