@@ -7,7 +7,7 @@ class LikesController < ApplicationController
     @like = current_user.likes.find_by(post_id: @post.id)
 
     @like.broadcast_replace_to(
-      "likes_channel",
+      "posts_likes_channel",
       partial: "posts/likes_count",
       locals: { 
         post: @post
@@ -22,7 +22,7 @@ class LikesController < ApplicationController
     current_user.remove_like(@post)
 
     @like.broadcast_replace_to(
-      "likes_channel",
+      "posts_likes_channel",
       partial: "posts/likes_count",
       locals: { 
         post: @post

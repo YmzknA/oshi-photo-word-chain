@@ -20,6 +20,11 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    if current_user?(@post.user)
+      render "edit"
+    else
+      redirect_to post_path(@post), notice: "You can't edit this post"
+    end
   end
 
   def liked
@@ -35,10 +40,10 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         @post.broadcast_prepend_to(
-          "posts_channel",
-          partial: "posts/post",
+          "posts_likes_channel",
+          partial: "posts/broadcast_first_post_content",
           locals: {
-            post: @post,
+            post: @post
           }
         )
 
@@ -47,6 +52,8 @@ class PostsController < ApplicationController
       else
         format.html { render action: :index , status: :unprocessable_entity }
       end
+
+      notice = "Post was successfully created."
     end
   end
 
@@ -81,5 +88,9 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:name, :body, :image, :url)
+    end
+
+    def current_user?(user)
+      user == current_user
     end
 end

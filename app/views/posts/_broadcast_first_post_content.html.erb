@@ -1,0 +1,29 @@
+
+<div class="group relative flex h-48 flex-col overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-64 xl:h-96">
+  <%# 画像とテキストのリンク %>
+  <%= link_to post_path(post) do %>
+    <img src="<%= post.image.url %>" loading="lazy" alt="Photo by " class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent md:via-transparent"></div>
+
+    <%# 画像テキスト %>
+    <div class="absolute bottom-0 left-0 right-0">
+      <div class="px-4">
+        <span class="block text-sm text-gray-200"><%= post.created_at.strftime("%B %d, %Y") %></span>
+        <h2 class="text-2xl font-semibold text-white transition duration-100">？？？</h2>
+      </div>
+      
+      <div class="pb-4 px-4">
+        <div class="flex items-center space-x-4">
+          <span class="font-semibold text-indigo-300">Show more</span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  
+  <%# いいねボタン（独立したリンク） %>
+  <div class="absolute bottom-4 right-4">
+    <div id="likes-heart-<%= post.id %>" >
+      <%= render 'posts/add_like', post: post %>
+    </div>
+  </div>
+</div>
