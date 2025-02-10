@@ -4,25 +4,28 @@
       <p class="text-xl font-semibold  mb-2 text-purple-600">
         <strong>New Post</strong>
       </p>
-      <p>
-        <strong>Answer:</strong>
-        <p class="text-2xl"> ？？？ </p>
+      <div class="text-sm text-gray-500 mb-2">
+        Photo by: <%= link_to post.user.name, user_path(post.user), class: "text-base text-blue-500 hover:underline" %> | Post at: <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
+    </div>
+    <p>
+    <strong>Answer:</strong>
+    <p class="text-2xl"> ？？？ </p>
+    </p>
+    <% if post.body.present? %>
+      <p class="text-lg font-semibold">
+      <strong>hint:</strong>
+      <%= post.body %>
       </p>
-      <% if post.body.present? %>
-        <p class="text-lg font-semibold">
-          <strong>hint:</strong>
-          <%= post.body %>
-        </p>
-      <% else %>
-        <p class="text-xl font-semibold">
-          no hint  
-        </p>
-      <% end %>
-      <% if post.image.present? %>
-        <div class="mt-4 flex justify-center">
-          <%= image_tag post.image.url, width: "500", class: "rounded-lg shadow-md" %>
-        </div>
-      <% end %>
+    <% else %>
+      <p class="text-xl font-semibold">
+      no hint  
+      </p>
+    <% end %>
+    <% if post.image.present? %>
+      <div class="mt-4 flex justify-center">
+        <%= image_tag post.image.url, width: "500", class: "rounded-lg shadow-md" %>
+      </div>
+    <% end %>
     </div>
   </div>
 </div>
