@@ -5,8 +5,9 @@
   <% end %>
 <% end %>
 
+
+<%# Flash 通知バー %>
 <%= turbo_stream.replace "notice" do %>
-  <%# Flash 通知バー %>
   <% if notice %>
     <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-8">
       <div class="flex">

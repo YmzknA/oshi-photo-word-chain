@@ -1,16 +1,6 @@
-  <% if notice %>
-    <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-8">
-      <div class="flex">
-        <div class="ml-3">
-          <p class="text-emerald-700"><%= notice %></p>
-        </div>
-      </div>
-    </div>
-  <% end %>
-
 <div class="bg-white py-6 sm:py-8 lg:py-12">
   <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-    <% if current_user.posts.any? %>
+    <% if @liked_posts.present? %>
       <div class="mb-6 flex items-end justify-between gap-4">
         <h2 class="text-2xl font-bold text-gray-800 lg:text-3xl">My Posts</h2>
         <!-- Optional: Link to "show more" posts -->
@@ -18,7 +8,7 @@
       </div>
 
       <div class="grid gap-x-4 gap-y-6 sm:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:grid-cols-4">
-        <% current_user.posts.each do |post| %>
+        <% @liked_posts.each do |post| %>
           <div>
             <%= render partial: "posts/post", locals: { post: post } %> 
           </div>
@@ -26,7 +16,7 @@
       </div>
     <% else %>
       <div class="mb-6 flex items-center justify-center">
-        <p class="text-gray-500">You have no posts yet.</p>
+        <p class="text-gray-500">You have no liked posts yet.</p>
       </div>
     <% end %>
   </div>

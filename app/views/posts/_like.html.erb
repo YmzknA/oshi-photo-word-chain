@@ -1,0 +1,6 @@
+    <% if current_user.present? && current_user.liked?(post) %>
+      <%= render partial: 'posts/remove_like', locals: { post: post } %>
+    <% else %>
+      <%= render partial: 'posts/add_like', locals: { post: post } %>
+    <% end %>
+
