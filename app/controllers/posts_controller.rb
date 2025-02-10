@@ -37,7 +37,6 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    post_params = image_resized(post_params)
     @post = Post.new(post_params)
     @posts = Post.all.order(created_at: :desc)
     @post.user_id = current_user.id
@@ -91,12 +90,5 @@ class PostsController < ApplicationController
 
     def current_user?(user)
       user == current_user
-    end
-
-    def image_resized(params)
-      if image.attached?
-        params[:image].tempfile = ImageProcessing::MiniMagick.source(params[:image].tempfile).resize_to_limit(500, 500).call
-      end
-      params
     end
 end
