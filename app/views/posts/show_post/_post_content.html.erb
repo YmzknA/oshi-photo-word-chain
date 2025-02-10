@@ -1,43 +1,47 @@
 <div class="bg-white rounded-lg text-center shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden border border-gray-100">
-<div class="p-6">
-<div id="<%= dom_id post %>">
-    <p>
-      <strong>Answer:</strong>
-      <p class="text-xl">
-        <%= post.name %>
-      </p>
-    </p>
-
-  <% if post.body.present? %>
-  <p class="mt-2">
-    <strong>Hint & 推し語り:</strong>
-    <p class="text-xl">
-      <%= post.body %>
-    </p>
-  </p>
-  <% else %>
-    <p class="text-xl mt-2">
-      no hint
-    </p>
-  <% end %>
-
-  <% if post.url.present? %>
-    <p class="mt-2">
-      <strong>参考URL:</strong>
-      <div class="flex justify-center">
-        <a href="<%= post.url %>" class="text-indigo-500 underline" target="_blank"><%= post.url %></a>
+  <div class="p-6">
+    <div id="<%= dom_id post %>">
+      <!-- 投稿者情報を表示 -->
+      <div class="text-sm text-gray-500 mb-2">
+        Photo by: <%= link_to post.user.name, user_path(post.user), class: "text-base text-blue-500 hover:underline" %> | Post at: <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
       </div>
-    </p>
-  <% end %>
 
-  <% if post.image.present? %>
-    <div class="mt-4 flex justify-center">
-      <%= image_tag post.image.url, width: "500" %>
+      <p>
+        <strong>Answer:</strong>
+        <p class="text-xl">
+          <%= post.name %>
+        </p>
+      </p>
+
+      <% if post.body.present? %>
+        <p class="mt-2">
+          <strong>Hint & 推し語り:</strong>
+          <p class="text-xl">
+            <%= post.body %>
+          </p>
+        </p>
+      <% else %>
+        <p class="text-xl mt-2">
+          no hint
+        </p>
+      <% end %>
+
+      <% if post.url.present? %>
+        <p class="mt-2">
+          <strong>参考URL:</strong>
+          <div class="flex justify-center">
+            <a href="<%= post.url %>" class="text-indigo-500 underline" target="_blank"><%= post.url %></a>
+          </div>
+        </p>
+      <% end %>
+
+      <% if post.image.present? %>
+        <div class="mt-4 flex justify-center">
+          <%= image_tag post.image.url, width: "500" %>
+        </div>
+      <% end %>
+
     </div>
-  <% end %>
-
-
+  </div>
 </div>
 
-</div>
-</div>
