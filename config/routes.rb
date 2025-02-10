@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "homes#top"
+  get "about" => "homes#about"
 
   resources :user, only: [:show]
 
