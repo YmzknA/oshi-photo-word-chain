@@ -2,6 +2,11 @@
   <%# 画像とテキストのリンク %>
   <%= link_to post_path(post) do %>
     <%= image_tag post.image.width_only.url, class: "absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" %>
+
+    <div class="absolute top-0 left-0 bg-red-500 text-white text-lg font-bold px-2 py-1 rounded-br-lg">
+      New!
+    </div>
+
     <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent md:via-transparent"></div>
 
     <%# 画像テキスト %>
@@ -10,7 +15,7 @@
         <span class="block text-sm text-gray-200"><%= post.created_at.strftime("%B %d, %Y") %></span>
         <h2 class="text-2xl font-semibold text-white transition duration-100">？？？</h2>
       </div>
-      
+
       <div class="pb-4 px-4">
         <div class="flex items-center space-x-4">
           <span class="font-semibold text-indigo-300">Show more</span>
@@ -18,7 +23,7 @@
       </div>
     </div>
   <% end %>
-  
+
   <%# いいねボタン（独立したリンク） %>
   <div class="absolute bottom-4 right-4">
     <div id="likes-heart-<%= post.id %>" >
