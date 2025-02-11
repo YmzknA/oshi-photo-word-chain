@@ -1,8 +1,5 @@
 <%= turbo_stream.replace "new_post" do %>
-  <%= form_with model: Post.new do |form| %>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-      <%= render "form", form: form %>
-  <% end %>
+  <%= render "form", post: @post %>
 <% end %>
 
 
@@ -10,11 +7,11 @@
 <%= turbo_stream.replace "notice" do %>
   <% if notice %>
     <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-8">
-      <div class="flex">
-        <div class="ml-3">
-          <p class="text-emerald-700"><%= notice %></p>
-        </div>
-      </div>
+    <div class="flex">
+    <div class="ml-3">
+    <p class="text-emerald-700"><%= notice %></p>
+    </div>
+    </div>
     </div>
   <% end %>
 <% end %>
