@@ -9,36 +9,6 @@
 
     <%= yield :head %>
 
-    <meta name="description" content="推しPhoto Word Chainは、推しの写真をテーマにした写真共有サービスです。">
-    <meta name="keywords" content="Oshi Photo Word Chain, photo sharing, artist, theme, favorite">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="application-name" content="Oshi Photo Word Chain">
-    <meta name="apple-mobile-web-app-title" content="Oshi Photo Word Chain">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-navbutton-color" content="#ffffff">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <meta property="og:title" content="Oshi Photo Word Chain" />
-    <meta property="og:description" content="推しPhoto Word Chainは、推しの写真をテーマにした写真共有サービスです。" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://oshiphotowordchain-xbcvef1t.b4a.run/" />
-    <meta property="og:image" content="/ogp.jpg" />
-    <meta property="og:site_name" content="Oshi Photo Word Chain" />
-    <meta property="og:locale" content="ja_JP" />
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@OshiPhotoWordChain">
-    <meta name="twitter:creator" content="@OshiPhotoWordChain">
-    <meta name="twitter:title" content="Oshi Photo Word Chain">
-    <meta name="twitter:description" content="推しPhoto Word Chainは、推しの写真をテーマにした写真共有サービスです。">
-    <meta name="twitter:image" content="/ogp.jpg">
-
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -49,6 +19,7 @@
     <link rel="apple-touch-icon" href="/logo.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= display_meta_tags(default_meta_tags) %>
   </head>
 
   <body class="raleway-font bg-indigo-50">
