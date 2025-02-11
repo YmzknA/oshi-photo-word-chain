@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  with_options presence: true do
-   validates :name
-  end
+  validates :name, presence: true,
+    uniqueness: { case_sensitive: false },
+    length: { minimum: 2, maximum: 20 }
 
   has_many :posts
   has_many :likes, dependent: :destroy

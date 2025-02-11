@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html class="h-full">
   <head>
-    <title><%= content_for(:title) || "Myapp" %></title>
+    <title><%= content_for(:title) || "Oshi Photo Word Chain" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= yield :head %>
+
+    <meta name="description" content="推しPhoto Word Chainは、推しの写真をテーマにした写真共有サービスです。">
+    <meta name="keywords" content="Oshi Photo Word Chain, photo sharing, artist, theme, favorite">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="application-name" content="Oshi Photo Word Chain">
+    <meta name="apple-mobile-web-app-title" content="Oshi Photo Word Chain">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-navbutton-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta property="og:title" content="Oshi Photo Word Chain" />
+    <meta property="og:description" content="推しPhoto Word Chainは、推しの写真をテーマにした写真共有サービスです。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://oshiphotowordchain-xbcvef1t.b4a.run/" />
+    <meta property="og:image" content="/ogp.jpg" />
+    <meta property="og:site_name" content="Oshi Photo Word Chain" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@OshiPhotoWordChain">
+    <meta name="twitter:creator" content="@OshiPhotoWordChain">
+    <meta name="twitter:title" content="Oshi Photo Word Chain">
+    <meta name="twitter:description" content="推しPhoto Word Chainは、推しの写真をテーマにした写真共有サービスです。">
+    <meta name="twitter:image" content="/ogp.jpg">
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,6 +138,15 @@
         </div>
       <% end %>
     </div>
+    <% if alert %>
+      <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-8">
+        <div class="flex">
+          <div class="ml-3">
+            <p class="text-red-700"><%= alert %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
 
     <div class="flex-grow w-full max-w-[90%] mx-auto max-h-screen">
       <%= yield %>
