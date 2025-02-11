@@ -13,6 +13,9 @@
     <% end %>
 
     <div class="mt-8 flex flex-col sm:flex-row sm:justify-between gap-4">
+      <%= link_to "https://twitter.com/intent/tweet?text=#{CGI.escape(@post.name)}&url=#{post_url(@post)}", target: "_blank", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center block flex items-center justify-center" do %>
+        <i class="fa fa-twitter mr-2"></i> Share on Twitter
+      <% end %>
       <% if @post.user == current_user %>
         <%= link_to "Edit this post", edit_post_path(@post), class: "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center block" %>
       <% end %>
