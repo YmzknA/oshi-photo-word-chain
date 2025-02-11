@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[ create destroy ]
+  before_action :set_post, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[create destroy]
 
   # GET /posts or /posts.json
   def index
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     if current_user?(@post.user)
-      render "edit"
+      render 'edit'
     else
       redirect_to post_path(@post), notice: "You can't edit this post"
     end
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
     if signed_in?
       @liked_posts = current_user.liked_posts
     else
-      redirect_to new_user_session_path, notice: "You need to sign in to see your liked posts"
+      redirect_to new_user_session_path, notice: 'You need to sign in to see your liked posts'
     end
   end
 
@@ -43,15 +43,15 @@ class PostsController < ApplicationController
 
     if @post.save
       @post.broadcast_prepend_to(
-        "posts_likes_channel",
-        partial: "posts/broadcast_first_post_content",
+        'posts_likes_channel',
+        partial: 'posts/broadcast_first_post_content',
         locals: {
           post: @post
         }
       )
-      flash.now[:notice] = "Post was successfully created."
+      flash.now[:notice] = 'Post was successfully created.'
     else
-      flash.now[:alert] = "Post was not created."
+      flash.now[:alert] = 'Post was not created.'
     end
   end
 
@@ -59,7 +59,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: "Post was successfully updated." }
+        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -72,23 +72,23 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy!
 
-    @post.broadcast_remove_to("posts_channel")
+    @post.broadcast_remove_to('posts_channel')
     redirect_to posts_path, notice: 'Post was successfully destroyed.'
-
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def post_params
-      params.require(:post).permit(:name, :body, :image, :url)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    def current_user?(user)
-      user == current_user
-    end
+  # Only allow a list of trusted parameters through.
+  def post_params
+    params.require(:post).permit(:name, :body, :image, :url)
+  end
+
+  def current_user?(user)
+    user == current_user
+  end
 end

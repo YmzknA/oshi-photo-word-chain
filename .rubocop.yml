@@ -1,8 +1,55 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+AllCops:
+  Exclude:
+    - "vendor/**/*"
+    - "db/**/*"
+    - "bin/*"
+    - "node_modules/**/*"
+    - "config/initializers/devise.rb"
+    - "config/environments/*.rb"
+    - "Gemfile"
+  NewCops: enable
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+Gemspec/DevelopmentDependencies:
+  Enabled: true
+Gemspec/RequireMFA:
+  Enabled: true
+Layout/LineContinuationSpacing:
+  Enabled: true
+Layout/LineEndStringConcatenationIndentation:
+  Enabled: true
+Layout/SpaceBeforeBrackets:
+  Enabled: true
+Lint/AmbiguousAssignment:
+  Enabled: true
+Lint/AmbiguousOperatorPrecedence:
+  Enabled: true
+Lint/AmbiguousRange:
+  Enabled: true
+Lint/ConstantOverwrittenInRescue:
+  Enabled: true
+Lint/DuplicateBranch:
+  Enabled: false
+
+Style/RedundantReturn:
+  Enabled: true
+  AllowMultipleReturnValues: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "config/routes.rb"
+
+Metrics/MethodLength:
+  Max: 40
+
+Metrics/AbcSize:
+  Max: 40
+
