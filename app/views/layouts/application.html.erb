@@ -14,15 +14,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/logo.png" type="image/png">
-    <link rel="icon" href="/logo.png" type="image/png">
-    <link rel="apple-touch-icon" href="/logo.png">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="logo.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= display_meta_tags(default_meta_tags) %>
   </head>
 
-  <body class="raleway-font bg-transparent" style="background-image: url('marble_bg.jpg')" >
+  <body class="raleway-font bg-transparent" style="background-image: url( <%= asset_path "marble_bg.jpg" %> )" >
     <header class="mb-8 border-b">
       <div class="mx-auto flex max-w-screen-2xl items-center justify-between px-4 md:px-8">
         <!-- logo - start -->
