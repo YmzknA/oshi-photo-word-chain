@@ -7,7 +7,7 @@
         Photo by: <%= link_to post.user.name, user_path(post.user), class: "text-base text-blue-500 hover:underline" %> | Post at: <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
         </p>
         <div class="flex justify-end ">
-          <%= render partial: "/twitter_share_button", locals: { post: post, name: post.name } %>
+          <%= render partial: "shared/twitter_share_button", locals: { post: post, name: post.name } %>
         </div>
       </div>
 

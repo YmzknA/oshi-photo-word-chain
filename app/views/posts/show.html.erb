@@ -1,11 +1,5 @@
 <% content_for :title, @title %>
 
-<% if notice %>
-  <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-8 rounded shadow">
-    <p class="text-emerald-700"><%= notice %></p>
-  </div>
-<% end %>
-
 <div class="flex justify-center mt-5 mx-2">
   <div class="w-full max-w-3xl bg-white rounded-lg shadow p-6">
     <% if @post == Post.all_posts.first %>

@@ -1,0 +1,22 @@
+    <%# Flash 通知バー %>
+    <div id="notice" >
+      <% if notice %>
+        <div class="mx-7 bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-3">
+          <div class="flex">
+            <div class="ml-3">
+              <p class="text-emerald-700"><%= notice %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <% if alert %>
+      <div class="mx-7 bg-red-50 border-l-4 border-red-500 p-4 mb-3">
+        <div class="flex">
+          <div class="ml-3">
+            <p class="text-red-700"><%= alert %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+

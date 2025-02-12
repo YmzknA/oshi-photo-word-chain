@@ -28,13 +28,13 @@ class PostsController < ApplicationController
     if current_user?(@post.user)
       render 'edit'
     else
-      redirect_to post_path(@post), notice: "You can't edit this post"
+      redirect_to post_path(@post), alert: "You can't edit another user's post!!!"
     end
   end
 
   def liked
     if signed_in?
-      @liked_posts = current_user.liked_posts
+      @liked_posts = current_user.liked_posts.order(created_at: :desc)
     else
       redirect_to new_user_session_path, notice: 'You need to sign in to see your liked posts'
     end
@@ -77,7 +77,11 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy!
 
-    @post.broadcast_remove_to('posts_channel')
+    @post.broadcast_remove_to(
+      'posts_likes_channel',
+      target: "post_id_#{@post.id}"
+    )
+
     redirect_to posts_path, notice: 'Post was successfully destroyed.'
   end
 
