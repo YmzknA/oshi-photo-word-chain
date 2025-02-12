@@ -1,4 +1,4 @@
-<div class="group relative flex h-48 flex-col overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-96">
+<div id="post_id_<%= post.id %>" class="group relative flex h-48 flex-col overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-96">
   <%# 画像とテキストのリンク %>
   <%= link_to post_path(post) do %>
     <%= image_tag post.image.width_only.url, class: "absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" %>

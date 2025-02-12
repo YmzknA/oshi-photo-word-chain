@@ -2,9 +2,9 @@ class Post < ApplicationRecord
   validates :name, presence: true
   validates :image, presence: true
 
-  validates :name, length: { in: 1..20 }
-  validates :body, length: { in: 0..100 }
-  validates :url, length: { in: 0..2083}
+  validates :name, length: { in: 2..20 }
+  validates :body, length: { in: 0..200 }
+  validates :url, length: { in: 0..2083 }
 
   mount_uploader :image, ImageUploader
 

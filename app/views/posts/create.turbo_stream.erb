@@ -5,13 +5,5 @@
 
 <%# Flash 通知バー %>
 <%= turbo_stream.replace "notice" do %>
-  <% if notice %>
-    <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-8">
-    <div class="flex">
-    <div class="ml-3">
-    <p class="text-emerald-700"><%= notice %></p>
-    </div>
-    </div>
-    </div>
-  <% end %>
+  <%= render "shared/flash_bar" %>
 <% end %>
