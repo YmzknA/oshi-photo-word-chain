@@ -2,10 +2,10 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: '推し photo word chain',
-      title: '推し photo word chain',
+      title: @title || '推し photo word chain',
       reverse: true,
       charset: 'utf-8',
-      description: '推しPhoto Word Chainは、推しの写真をテーマにした写真共有サービスです。',
+      description: '推しPhoto Word Chainは、推しの写真としりとりをテーマにした写真共有サービスです。',
       keywords: '写真,推し',
       canonical: request.original_url,
       separator: '|',

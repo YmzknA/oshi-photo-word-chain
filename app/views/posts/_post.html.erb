@@ -9,12 +9,12 @@
   <% if post == Post.all_posts.first %>
     <!-- 最初の投稿の場合 -->
     <div class="flex-1">
-      <%= render partial: "posts/first_post_content", locals: { post: post } %>
+      <%= render "posts/first_post_content", post: post %>
     </div>
   <% else %> 
     <div class="flex-1">
-      <%= render partial: "posts/post_content", locals: { post: post } %>
+      <%= render "posts/post_content", post: post %>
     </div>
   <% end %>
-
 </div>
+
