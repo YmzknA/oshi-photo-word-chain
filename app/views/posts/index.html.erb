@@ -11,7 +11,7 @@
     <div class="mb-10 md:mb-16">
       <% if user_signed_in? %>
         <%# 新規投稿フォーム %>
-        <div class="bg-indigo-200 rounded-lg shadow-sm border border-gray-200 mb-12">
+        <div class="bg-transparent rounded-lg shadow-sm border border-gray-200 mb-12" style="background-image: url('assets/marble_bg.jpg'); background-size: cover; background-position: center;">
           <div class="p-6">
             <h2 class="text-xl font-semibold text-gray-900 mb-6">Create New Post</h2>
             <div id="new_post">
@@ -35,7 +35,7 @@
     <div id="posts" class="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8">
       <!-- article - start -->
       <% @posts.each do |post| %>
-        <%= render partial: "posts/post", locals: { post: post } %>
+        <%= render "post", post: post %>
       <% end %>
     </div>
 

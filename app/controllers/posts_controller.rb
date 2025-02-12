@@ -11,6 +11,11 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def show
     @posts = Post.all.order(created_at: :desc)
+    @title = if @post == @posts.first
+               'Photo of ？？？'
+             else
+               "Photo of #{@post.name}"
+             end
   end
 
   # GET /posts/new
