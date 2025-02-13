@@ -18,31 +18,54 @@
         <p class="text-2xl"> ？？？ </p>
       </p>
 
-    <% if post.body.present? %>
-      <p class="text-lg font-semibold">
-      <strong>hint:</strong>
-      <%= post.body %>
-      </p>
-    <% else %>
-      <p class="text-xl font-semibold">
-      no hint  
-      </p>
-    <% end %>
+      <button class="hint-button my-4 px-4 py-2 bg-indigo-400 text-white font-bold rounded-lg hover:bg-indigo-700 transition duration-300 ease-in-out transform hover:scale-105">Show hint</button>
 
-    <% if post.url.present? %>
-      <p class="mt-2">
-      <strong>参考URL:</strong>
-      <div class="flex justify-center">
-        <a href="<%= post.url %>" class="text-indigo-500 underline" target="_blank"><%= post.url %></a>
+      <div class="hint">
+        <% if post.body.present? %>
+          <p class="text-lg font-semibold">
+          <strong>hint:</strong>
+          </p>
+          <%= post.body %>
+        <% else %>
+          <p class="text-xl font-semibold">
+          no hint  
+          </p>
+        <% end %>
       </div>
-      </p>
-    <% end %>
 
-    <% if post.image.present? %>
-      <div class="mt-4 flex justify-center">
-        <%= image_tag post.image.width_only.url, width: "500", class: "rounded-lg shadow-md" %>
+      <div class="hint">
+        <% if post.url.present? %>
+          <p class="text-lg font-semibold">
+          <strong>参考URL:</strong>
+          <div class="flex justify-center">
+            <a href="<%= post.url %>" class="text-indigo-500 underline" target="_blank"><%= post.url %></a>
+          </div>
+          </p>
+        <% end %>
       </div>
-    <% end %>
+
+      <% if post.image.present? %>
+        <div class="mt-4 flex justify-center">
+          <%= image_tag post.image.width_only.url, width: "500", class: "rounded-lg shadow-md" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
+
+<script>
+  <!-- .hintクラスの要素全てにhiddenを追加する -->
+  <!-- .hint-buttonをクリックすると、.hintのhiddenがtoggle -->
+  document.querySelectorAll('.hint').forEach(function(element) {
+    element.classList.add('hidden');
+  });
+
+  document.querySelectorAll('.hint-button').forEach(function(button) {
+    button.addEventListener('click', function() {
+      const hints = document.querySelectorAll('.hint');
+      hints.forEach(function(hint) {
+        hint.classList.toggle('hidden');
+      });
+    });
+  });
+</script>
