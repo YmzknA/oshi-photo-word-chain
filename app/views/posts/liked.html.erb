@@ -27,4 +27,14 @@
   document.querySelectorAll('.user_show_hidden').forEach(function(element) {
     element.classList.add('hidden');
   });
+
+  const answerElement = document.querySelector(".answer");
+
+  if (answerElement) {
+    answerElement.addEventListener("click", function(event) {
+      event.preventDefault();
+      answerElement.classList.toggle("hidden");
+    });
+  }
+
 </script>
