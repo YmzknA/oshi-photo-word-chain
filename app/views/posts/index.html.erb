@@ -40,8 +40,11 @@
         <%= render "post", post: post %>
       <% end %>
     </div>
-
   </div>
+  <div class="flex justify-center mt-8">
+    <%= paginate @posts %>
+  </div>
+
 </div>
 
 <%= turbo_stream_from "posts_likes_channel" %>

@@ -1,0 +1,7 @@
+<% if page.current? %>
+  <span class="flex items-center justify-center bg-purple-300 text-white px-4 py-3 rounded-full w-10 h-10"><%= page %></span>
+<% else %>
+  <%= link_to url, remote: remote, rel: page.rel, class: "flex items-center justify-center text-gray-700 px-4 py-3 rounded-full w-10 h-10 font-light hover:bg-gray-200" do %>
+    <%= page %>
+  <% end %>
+<% end %>
