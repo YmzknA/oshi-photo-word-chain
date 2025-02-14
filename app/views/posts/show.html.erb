@@ -9,12 +9,10 @@
     <% end %>
 
     <div class="mt-8 flex flex-col sm:flex-row sm:justify-between gap-4">
-      <% if @post.user == current_user %>
-        <%= link_to "Edit this post", edit_post_path(@post), class: "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center block" %>
-      <% end %>
       <%= link_to "Back to posts", posts_path, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded text-center block" %>
       <% if @post.user == current_user %>
-        <%= button_to "Destroy this post", @post, method: :delete, data: { confirm: "Are you sure?" }, class: "bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded text-center block" %>
+        <%= link_to "Edit this post", edit_post_path(@post), class: "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded text-center block" %>
+        <%= button_to "Destroy this post", @post, method: :delete, data: { "turbo_confirm": "Are you sure?" }, class: "bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded text-center block" %>
       <% end %>
     </div>
   </div>
