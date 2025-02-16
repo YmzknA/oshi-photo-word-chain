@@ -6,6 +6,6 @@
 <%# Flash 通知バー %>
 <%= turbo_stream.replace "notice" do %>
   <%= render "shared/flash_bar" %>
+  <%= render partial: "shared/twitter_share_button", locals: { post: @post, name: '最新の解答' } %>
 <% end %>
 
-<% logger.debug "--------------------------------" %>
