@@ -60,7 +60,7 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-gem 'cloudinary', '~> 2.2'
+gem 'cloudinary', '~> 2.3'
 
 gem 'carrierwave', '~> 3.1'
 gem 'devise'
