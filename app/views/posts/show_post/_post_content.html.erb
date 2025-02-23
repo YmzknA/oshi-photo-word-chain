@@ -1,10 +1,12 @@
 <div class="bg-white rounded-lg text-center shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden border border-gray-100">
   <div class="p-6 text-gray-500">
     <div id="<%= dom_id post %>">
-      <!-- 投稿者情報を表示 -->
-      <div class="text-sm text-gray-500 mb-7 flex justify-center justify-between">
-        <p>
-        Photo by: <%= link_to post.user.name, user_path(post.user), class: "text-base text-blue-500 hover:underline" %> | Post at: <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
+      <div class="text-sm text-gray-500 mb-7 flex justify-between">
+        <p class="text-left justify-start">
+          Photo by: <%= link_to post.user.name, user_path(post.user), class: "text-base text-blue-500 hover:underline" %>
+          <span class="md:hidden"><br></span>
+          <span class="hidden md:inline">|</span>
+          Post at: <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y/%m/%d %H:%M") %>
         </p>
         <div class="flex justify-end ">
           <%= render partial: "shared/twitter_share_button", locals: { post: post, name: post.name } %>
@@ -35,7 +37,7 @@
         <p class="mt-2">
           <strong>参考URL:</strong>
           <div class="flex justify-center">
-            <a href="<%= post.url %>" class="text-indigo-500 underline" target="_blank"><%= post.url %></a>
+            <a href="<%= post.url %>" class="text-indigo-500 underline truncate" target="_blank"><%= post.url %></a>
           </div>
         </p>
       <% end %>
