@@ -44,7 +44,7 @@
 
       <% if post.image.present? %>
         <div class="mt-4 flex justify-center">
-          <%= image_tag post.image.url, width: "500" %>
+          <%= image_tag post.image.width_only.url, width: "500" %>
         </div>
       <% end %>
 
