@@ -1,24 +1,27 @@
-# README
+# 推し photo
+*～好きなものの写真でしりとりをするアプリ～*
+https://oshiphotowordchain-xbcvef1t.b4a.run/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サービス概要  
+  好きなものの写真でしりとりをするアプリです。写真に映る好きなものについて、調べたりすることで、より深く知って貰えます。
 
-Things you may want to cover:
+## このサービスへの思い・作りたい理由 
+  自分の好きなものを共有するときの口実が欲しくて作りました。しりとりの要素を加えることで、遊び心を交えながら交流できます。
 
-* Ruby version
+## ユーザー層について  
 
-* System dependencies
+- **好きなものの写真を共有したい人**  
 
-* Configuration
+- **皆の好きなものが観たい人**  
 
-* Database creation
+## 使用技術（暫定）
 
-* Database initialization
+| カテゴリ | 使用技術 |
+| --- | --- |
+| フロントエンド | TailwindCSS |
+| バックエンド | Ruby 3.3.6 / Rails 7.2.2 |
+| データベース | PostgreSQL |
+| 開発環境 | Docker |
+| インフラ | Back4app / Neon / Upstash / Cloudinary |
+| VCS | GitHub |
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
