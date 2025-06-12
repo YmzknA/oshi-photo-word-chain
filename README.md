@@ -1,5 +1,5 @@
 # 推し photo
-*～好きなものの写真でしりとりをするアプリ～*
+*～好きなものの写真でしりとりをするアプリ～*  
 https://oshiphotowordchain-xbcvef1t.b4a.run/
 
 ## サービス概要  
